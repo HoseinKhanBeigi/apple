@@ -37,9 +37,9 @@ class AppThumbnailSlider extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.location.pathname);
+    console.log(this.props.match.params.string);
 
-    const subStringres = this.props.location.pathname.substring(1);
+    const subStringres = this.props.match.params.string;
     this.setState({
       subString: subStringres
     });

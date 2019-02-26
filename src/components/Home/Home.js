@@ -60,10 +60,14 @@ class Home extends PureComponent<State, Props> {
 
   handlePush = i => {
     const { history } = this.props;
-    const res = i;
+
     this.props.addTodo();
 
-    history.push(`/${res}`);
+    if (i === "horizontal" || i === "vertical") {
+      history.push(`product/${i}`);
+    } else {
+      history.push(`/${i}`);
+    }
   };
 
   handlePicesOpen = el =>
