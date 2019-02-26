@@ -30,20 +30,20 @@ class ClipPath extends PureComponent<State> {
       .querySelector(".sizeH")
       .getBoundingClientRect();
 
-    const initImg = document.querySelector(".img").getBoundingClientRect();
+    const resHeight = document.querySelector(".img").getBoundingClientRect();
 
-    console.log(initImg.height, "initImg");
+    console.log(resHeight.height);
+
+    const initImg = resHeight.height === 0 ? 696 : resHeight.height;
+
     // get the height of the body. if it doesn't work or does wrong work you should used window.innerHeight
-    const initHeight = document.body.clientHeight;
+    const initHeight = window.innerHeight;
 
-    console.log(initHeight, "initHeight");
-
-    const newHeightForCenterinit =
-      (initHeight - Math.round(initImg.height)) / 2;
+    const newHeightForCenterinit = (initHeight - Math.round(initImg)) / 2;
 
     this.setState({
       newHeightForcenter: newHeightForCenterinit,
-      heightForParent: initImg.height,
+      heightForParent: initImg,
       heightBody: initHeight,
       heightCaption: initHeight - initSizeHeightCaption.height - 10
     });
@@ -53,7 +53,8 @@ class ClipPath extends PureComponent<State> {
         .querySelector(".sizeH")
         .getBoundingClientRect();
       const Img = document.querySelector(".img").getBoundingClientRect();
-      const height = document.body.clientHeight;
+      console.log(Img);
+      const height = window.innerHeight;
       const newHeightForCenter = (height - Img.height) / 2;
 
       this.setState({
@@ -65,7 +66,7 @@ class ClipPath extends PureComponent<State> {
     });
 
     document.addEventListener("scroll", () => {
-      const heightScroll = document.body.clientHeight / 4;
+      const heightScroll = window.innerHeight / 4;
       const sectionContent3 = document
         .querySelector(".pad-bottom")
         .getBoundingClientRect();
