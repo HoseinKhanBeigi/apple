@@ -54,7 +54,7 @@ class AppThumbnailSlider extends Component {
             <div className="standard-product-container">
               <ThumbnailSlider
                 images={this.state.images}
-                direction={this.state.subString}
+                direction={`${this.props.match.params.string}`}
                 isTouch="true"
                 numberOfThumpImage={5}
                 gapBetweenThumbnail={30}

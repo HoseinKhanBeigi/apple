@@ -32,14 +32,14 @@ class ClipPath extends PureComponent<State> {
 
     const resHeight = document.querySelector(".img").getBoundingClientRect();
 
-    console.log(resHeight.height);
-
     const initImg = resHeight.height === 0 ? 696 : resHeight.height;
 
     // get the height of the body. if it doesn't work or does wrong work you should used window.innerHeight
     const initHeight = window.innerHeight;
 
     const newHeightForCenterinit = (initHeight - Math.round(initImg)) / 2;
+
+    console.log(window);
 
     this.setState({
       newHeightForcenter: newHeightForCenterinit,
@@ -48,12 +48,15 @@ class ClipPath extends PureComponent<State> {
       heightCaption: initHeight - initSizeHeightCaption.height - 10
     });
 
+    if (this.props.history.location.pathname === "/clipPath") {
+    }
+
     window.addEventListener("resize", () => {
       const sizeHeightCaption = document
         .querySelector(".sizeH")
         .getBoundingClientRect();
       const Img = document.querySelector(".img").getBoundingClientRect();
-      console.log(Img);
+
       const height = window.innerHeight;
       const newHeightForCenter = (height - Img.height) / 2;
 
@@ -67,18 +70,21 @@ class ClipPath extends PureComponent<State> {
 
     document.addEventListener("scroll", () => {
       const heightScroll = window.innerHeight / 4;
-      const sectionContent3 = document
-        .querySelector(".pad-bottom")
-        .getBoundingClientRect();
 
-      this.setState({
-        pageYOffset: sectionContent3.bottom - sectionContent3.height / 2.3
-      });
+      const sectionContent3 = document.querySelector(".pad-bottom");
+      if (this.props.history.location.pathname === "/clipPath") {
+        const ressectionContent3 = sectionContent3.getBoundingClientRect();
 
-      if (Math.round(this.state.pageYOffset) < Math.round(heightScroll)) {
-        document.querySelector(".caption").classList.add("show");
-      } else {
-        document.querySelector(".caption").classList.remove("show");
+        this.setState({
+          pageYOffset:
+            ressectionContent3.bottom - ressectionContent3.height / 2.3
+        });
+
+        if (Math.round(this.state.pageYOffset) < Math.round(heightScroll)) {
+          document.querySelector(".caption").classList.add("show");
+        } else {
+          document.querySelector(".caption").classList.remove("show");
+        }
       }
     });
   }
@@ -98,7 +104,7 @@ class ClipPath extends PureComponent<State> {
     const range = imgHeight === "auto" ? "" : "px";
 
     return (
-      <div>
+      <div className="resize">
         <section className="section">
           <div className="sticky-wrapper">
             <div className="section-content" />

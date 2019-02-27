@@ -30,6 +30,8 @@ class Home extends PureComponent<State, Props> {
     valueOpacity: 0,
     timer: 500,
     node: 0,
+    widthBody: 0,
+    heighBody: 0,
     portfolio: [1, 2, 4, 5],
     skills: [
       { name: "javascript/html/css/sass", num: 95 },
@@ -46,12 +48,21 @@ class Home extends PureComponent<State, Props> {
   _isMounted = false;
 
   componentDidMount() {
+    console.log(document.documentElement.clientWidth);
+    this.setState({
+      widthBody: window.innerWidth,
+      heighBody: window.innerHeight
+    });
+
     this._isMounted = true;
     const { todos } = this.props;
     if (todos > 1) {
       this.setState({ node: 1, valueOpacity: 1, opacityValue: 0 });
       this.handleOpenSync();
     }
+  }
+  componentDidUpdate() {
+    // this.setState({ widthBody: window.innerWidth });
   }
 
   componentWillUnmount() {
@@ -64,6 +75,7 @@ class Home extends PureComponent<State, Props> {
     this.props.addTodo();
 
     if (i === "horizontal" || i === "vertical") {
+      console.log(i, "i");
       history.push(`product/${i}`);
     } else {
       history.push(`/${i}`);
@@ -99,23 +111,36 @@ class Home extends PureComponent<State, Props> {
   };
 
   render() {
-    const { data, valueOpacity, node, opacityValue } = this.state;
+    const {
+      data,
+      valueOpacity,
+      node,
+      opacityValue,
+      widthBody,
+      heighBody
+    } = this.state;
 
     const symbol = (
       <polygon points="14.1333333 2.61666667 18.9333333 7.41666667 0 7.41666667 0 10.0833333 18.9333333 10.0833333 14.1333333 14.8833333 16 16.75 24 8.75 16 0.75" />
     );
 
     return (
-      <div style={{ backgroundColor: "rgb(37, 37, 37)" }}>
+      <div
+        style={{
+          backgroundColor: "rgb(37, 37, 37)",
+          width: `${widthBody}px`,
+          height: `${heighBody}px`
+        }}
+      >
         <button
           onClick={() => {
             this.handleOpenSync();
           }}
           style={{
             position: "absolute",
-            left: "50%",
+            left: `${0}px`,
             top: "25%",
-            transform: "translateX(-50%)",
+            transform: `translateX(${widthBody / 2 - 375}px)`,
             backgroundColor: "transparent",
             border: "none",
             fontSize: "300px",
@@ -128,7 +153,10 @@ class Home extends PureComponent<State, Props> {
           open
         </button>
         <main className="maino" style={{ opacity: `${node}` }}>
-          <div className="grid grid--layout-1">
+          <div
+            className="grid grid--layout-1 bodyHome"
+            style={{ backgroundColor: "rgb(37, 37, 37)" }}
+          >
             <div className="grid__item" style={{ display: "none" }}>
               <div className="revealer revealer--right revealer--hideX" />
               <div
@@ -309,7 +337,7 @@ class Home extends PureComponent<State, Props> {
                           <div className="revealer revealer--right revealer--hideX" />
                         </div>
 
-                        <span className="tooltiptext">Tooltip text</span>
+                        <span className="tooltiptext">{el}</span>
                       </div>
                     );
                   })}
