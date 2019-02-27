@@ -259,10 +259,12 @@ class Home extends PureComponent<State, Props> {
                     transition: "opacity 0.6s, -webkit-transform 0.6s ease"
                   }}
                 >
-                  javascript developer at datisParse datisPars.com develop
-                  functionality for make features and improve bugs with using js
-                  with along dependencies into app which developed with polymer
-                  and after time we decided to change it to react-redux
+                  javascript developer at datisParse datisPars.com TA/TD is the
+                  admin panel for managing, querying and visualizing the data
+                  for a network security device used in Germany. The project was
+                  built Polymer.js and D3.js. I was mainly responsible for
+                  rewriting the modules in a high-performance manner and
+                  creating and implementing the charts.
                 </span>
               </div>
             </div>
@@ -281,8 +283,8 @@ class Home extends PureComponent<State, Props> {
                 >
                   react developer at RoundTableApp roundtableapps.com develop
                   functionality for make features and improve bugs and convert
-                  wireFrame to html/css with using js with along dependencies.
-                  we did implement projects with react-redux
+                  wireFrame to html/css/js with along dependencies. implement
+                  projects with react-redux
                 </span>
               </div>
             </div>

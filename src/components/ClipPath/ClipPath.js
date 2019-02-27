@@ -39,8 +39,6 @@ class ClipPath extends PureComponent<State> {
 
     const newHeightForCenterinit = (initHeight - Math.round(initImg)) / 2;
 
-    console.log(window);
-
     this.setState({
       newHeightForcenter: newHeightForCenterinit,
       heightForParent: initImg,
@@ -48,31 +46,15 @@ class ClipPath extends PureComponent<State> {
       heightCaption: initHeight - initSizeHeightCaption.height - 10
     });
 
-    if (this.props.history.location.pathname === "/clipPath") {
-    }
+    this.handleResizing();
+    this.handleScrolling();
+  }
 
-    window.addEventListener("resize", () => {
-      const sizeHeightCaption = document
-        .querySelector(".sizeH")
-        .getBoundingClientRect();
-      const Img = document.querySelector(".img").getBoundingClientRect();
-
-      const height = window.innerHeight;
-      const newHeightForCenter = (height - Img.height) / 2;
-
-      this.setState({
-        newHeightForcenter: newHeightForCenter,
-        heightForParent: Img.height,
-        heightBody: height,
-        heightCaption: height - sizeHeightCaption.height - 10
-      });
-    });
-
+  handleScrolling = () => {
     document.addEventListener("scroll", () => {
-      const heightScroll = window.innerHeight / 4;
-
-      const sectionContent3 = document.querySelector(".pad-bottom");
       if (this.props.history.location.pathname === "/clipPath") {
+        const heightScroll = window.innerHeight / 4;
+        const sectionContent3 = document.querySelector(".pad-bottom");
         const ressectionContent3 = sectionContent3.getBoundingClientRect();
 
         this.setState({
@@ -87,7 +69,28 @@ class ClipPath extends PureComponent<State> {
         }
       }
     });
-  }
+  };
+
+  handleResizing = () => {
+    window.addEventListener("resize", () => {
+      if (this.props.history.location.pathname === "/clipPath") {
+        const sizeHeightCaption = document
+          .querySelector(".sizeH")
+          .getBoundingClientRect();
+        const Img = document.querySelector(".img").getBoundingClientRect();
+
+        const height = window.innerHeight;
+        const newHeightForCenter = (height - Img.height) / 2;
+
+        this.setState({
+          newHeightForcenter: newHeightForCenter,
+          heightForParent: Img.height,
+          heightBody: height,
+          heightCaption: height - sizeHeightCaption.height - 10
+        });
+      }
+    });
+  };
 
   render() {
     const {
