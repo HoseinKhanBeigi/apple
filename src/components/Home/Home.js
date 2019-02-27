@@ -198,6 +198,7 @@ class Home extends PureComponent<State, Props> {
                   <span> Address: tehran - iran</span>
                   <span> Phone: +9809383345749</span>
                   <span> E-mail: hoseinkhanbeigi@gmail.com</span>
+                  <span> github: github.com/HoseinKhanBeigi</span>
                 </span>
               </div>
             </div>
