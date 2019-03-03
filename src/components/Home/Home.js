@@ -325,26 +325,28 @@ class Home extends PureComponent<State, Props> {
                 </h3>
 
                 <div style={{ display: "flex", flexDirection: "row" }}>
-                  {["horizontal", "vertical", "clipPath"].map((el, i) => {
-                    return (
-                      <div className="tooltip" key={i}>
-                        <div
-                          style={{
-                            width: `${10}%`,
-                            backgroundColor: "white",
-                            margin: "10px",
-                            padding: "20px"
-                          }}
-                          className="grid__item2"
-                          onClick={() => this.handlePush(el)}
-                        >
-                          <div className="revealer revealer--right revealer--hideX" />
-                        </div>
+                  {["horizontal", "vertical", "clipPath", "chatbot"].map(
+                    (el, i) => {
+                      return (
+                        <div className="tooltip" key={i}>
+                          <div
+                            style={{
+                              width: `${10}%`,
+                              backgroundColor: "white",
+                              margin: "10px",
+                              padding: "20px"
+                            }}
+                            className="grid__item2"
+                            onClick={() => this.handlePush(el)}
+                          >
+                            <div className="revealer revealer--right revealer--hideX" />
+                          </div>
 
-                        <span className="tooltiptext">{el}</span>
-                      </div>
-                    );
-                  })}
+                          <span className="tooltiptext">{el}</span>
+                        </div>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>
