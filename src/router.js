@@ -1,4 +1,10 @@
-import { Home, AppThumbnailSlider, ClipPath } from "./components";
+import {
+  Home,
+  AppThumbnailSlider,
+  ClipPath,
+  CartImage,
+  ChatBots
+} from "./components";
 
 const routes = [
   {
@@ -15,6 +21,16 @@ const routes = [
     path: "/clipPath",
     exact: true,
     component: ClipPath
+  },
+  {
+    path: "/images",
+    exact: true,
+    component: CartImage
+  },
+  {
+    path: "/chatbot",
+    exact: true,
+    component: ChatBots
   }
 ];
 

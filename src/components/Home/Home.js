@@ -92,7 +92,8 @@ class Home extends PureComponent<State, Props> {
             el.classList.add("revealer--left"),
             el.classList.add("revealer--showX")
           ),
-        this.props.todos > 1 ? 0 : 500
+        0
+        // this.props.todos > 1 ? 0 : 500
       );
     });
 
