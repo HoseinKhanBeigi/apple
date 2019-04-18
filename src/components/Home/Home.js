@@ -92,8 +92,8 @@ class Home extends PureComponent<State, Props> {
             el.classList.add("revealer--left"),
             el.classList.add("revealer--showX")
           ),
-        0
-        // this.props.todos > 1 ? 0 : 500
+
+        this.props.todos > 1 ? 0 : 500
       );
     });
 
@@ -120,10 +120,6 @@ class Home extends PureComponent<State, Props> {
       widthBody,
       heighBody
     } = this.state;
-
-    const symbol = (
-      <polygon points="14.1333333 2.61666667 18.9333333 7.41666667 0 7.41666667 0 10.0833333 18.9333333 10.0833333 14.1333333 14.8833333 16 16.75 24 8.75 16 0.75" />
-    );
 
     return (
       <div
